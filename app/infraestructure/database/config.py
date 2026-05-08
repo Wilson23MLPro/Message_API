@@ -3,7 +3,6 @@ from dotenv import load_dotenv
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
 from app.infraestructure.database.models import Base
 from pathlib import Path
-import psycopg2
 
 #this finds the .evn file in the project root regardless of where you run the script from
 env_path = Path(__file__).resolve().parent.parent.parent.parent / '.env'
@@ -13,9 +12,6 @@ load_dotenv(dotenv_path=env_path)
 #Build the PostgreSQL Async URL
 # Format: postgresql+asyncpg://user:password@host:port/dbname
 DATABASE_URL = os.getenv("DATABASE_URL")
-#connect to the database
-connection = psycopg2.connect(DATABASE_URL)
-
 
 #debug if occurs an error
 
